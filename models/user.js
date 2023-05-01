@@ -1,6 +1,8 @@
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');  // Destructuring the needed MODULES
 
-const userSchema = new mongoose.Schema(
+//const userSchema = new mongoose.Schema(
+const userSchema = new Schema(
     {
         username: { 
             type: String, 
