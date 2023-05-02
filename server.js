@@ -50,17 +50,25 @@ app.post('/users', (req, res) => {
 
 // Find Single User and UPDATE 
 app.put('/users/:id', (req, res) => {
-  
   console.log("Req Parameters: ", req.params);
   console.log("Req Body: ", req.body);
-
-  res.status(200).json({ message: "Update Single User Route"})
+  User.updateOne(req.body, (err, data) => {
+    if(err) {
+      res.status(500).json({ message: 'Internal server error' });
+    }
+    res.status(200).json({ message: "Update Single User Route", data });
+  })
 })
+
 // REmove USER from DB
 app.delete('/users/:id', (req, res) => {
   console.log("Req Parameters: ", req.params);
-
-  res.status(200).json({ message: "Delete Single User Route"})
+  User.deleteOne(req.body,(err, data) => {
+    if(err){
+      res.status(500).json({ message: "Internal server error" });
+    }
+    res.status(200).json({ message: "Delete Single User Route", data })
+  } )
 })
 
 db.once('open', () => {
