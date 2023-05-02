@@ -123,11 +123,11 @@ app.delete("/thoughts/:id", (req, res) => {
 })
 
 // Post a reaction to a thought by its ID
-app.post('thoughts/:id/reactions', (req, res) => {
+app.post("thoughts/:id/reactions", (req, res) => {
   console.log("Req Parameters: ", req.params);
   console.log("Req Body: ", req.body);
-  const reaction = req.body;
-  Thought.findOneAndUpdate({ _id: req.params.id }, { $push: { reactions: reaction }}, (err, data) => {
+  // const reaction = req.body;
+  Thought.findOneAndUpdate({ _id: req.params.id }, { $push: { reactions: req.body }}, (err, data) => {
     if (err) {
       res.status(500).json({ message: "Internal server error" });
     }
