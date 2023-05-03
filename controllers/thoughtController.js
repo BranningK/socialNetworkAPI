@@ -51,6 +51,27 @@ module.exports = {
       }
       res.status(200).json({ message: "Delete thought by ID", data });
     });
-  }
+  },
 
+  addReaction(req, res) {
+    console.log("Req Parameters: ", req.params);
+    console.log("Req Body: ", req.body);
+    // const reaction = req.body;
+    Thought.findOneAndUpdate({ _id: req.params.id }, { $push: { reactions: req.body }}, (err, data) => {
+      if (err) {
+        res.status(500).json({ message: "Internal server error" });
+      }
+      res.status(200).json({ message: "Add reaction to thought", data });
+    });
+  },
+
+  deleteReaction(req, res) {
+    console.log("Req Parameters: ", req.params);
+    Thought.findOneAndDelete({ _id: req.params.id }, { reactionId: req.params.reactionId }, (err, data) => {
+      if(err) {
+        res.status(500).json({ message: "Internal server error" });
+      }
+      res.status(200).json({ message: "Delete reaction to thought", data });
+    });
+  },
 };

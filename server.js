@@ -126,6 +126,8 @@ app.use(routes);
   // });
 // })
 
+// -------------------------------------------------------------------------
+
 // // Post a reaction to a thought by its ID
 // app.put("thoughts/:thoughtId/reactions", (req, res) => {
 //   console.log("Req Parameters: ", req.params);
