@@ -68,6 +68,8 @@ app.use(routes);
 //   });
 // });
 
+//------------------------------------------------------------------------
+
 // // Get ALL thoughts
 // app.get('/thoughts', (req, res) => {
 //   Thought.find({}, (err, data)=> {
@@ -102,26 +104,26 @@ app.use(routes);
 
 // // Update thought by ID
 // app.put("/thoughts/:id", (req, res) => {
-//   console.log("Req Parameters: ", req.params);
-//   console.log("Req Body: ", req.body);
-//   Thought.findByIdAndUpdate({ _id: req.params.id }, req.body, (err, data) => {
-//     console.log("Data: ", data);
-//     if(err){
-//       res.status(500).json({ message: "Internal server error" });
-//     }
-//     res.status(200).json({ message: "Update thought by ID", data });
-//   });
+  // console.log("Req Parameters: ", req.params);
+  // console.log("Req Body: ", req.body);
+  // Thought.findByIdAndUpdate({ _id: req.params.id }, req.body, (err, data) => {
+  //   console.log("Data: ", data);
+  //   if(err){
+  //     res.status(500).json({ message: "Internal server error" });
+  //   }
+  //   res.status(200).json({ message: "Update thought by ID", data });
+  // });
 // });
 
 // // Delete a thought by ID
 // app.delete("/thoughts/:id", (req, res) => {
-//   console.log("Req parameters: ", req.params);
-//   Thought.findOneAndDelete({ _id: req.params.id }, req.body, (err, data) => {
-//     if(err){
-//       res.status(500).json({ message: "Internal server error" });
-//     }
-//     res.status(200).json({ message: "Delete thought by ID", data });
-//   });
+  // console.log("Req parameters: ", req.params);
+  // Thought.findOneAndDelete({ _id: req.params.id }, req.body, (err, data) => {
+  //   if(err){
+  //     res.status(500).json({ message: "Internal server error" });
+  //   }
+  //   res.status(200).json({ message: "Delete thought by ID", data });
+  // });
 // })
 
 // // Post a reaction to a thought by its ID
