@@ -35,7 +35,7 @@ module.exports = {
     updateUser(req, res) {
         console.log("Req Parameters: ", req.params);
         console.log("Req Body: ", req.body);
-        User.updateOne(req.body, (err, data) => {
+        User.updateOne({ _id: req.params.id }, req.body, (err, data) => {
             if(err) {
               res.status(500).json({ message: 'Internal server error' });
             }
@@ -45,7 +45,7 @@ module.exports = {
 
     deleteUser(req, res) {
         console.log("Req Parameters: ", req.params);
-        User.deleteOne(req.params.id, (err, data) => {
+        User.deleteOne({ _id: req.params.id }, (err, data) => {
             if(err){
               res.status(500).json({ message: "Internal server error" });
             }
