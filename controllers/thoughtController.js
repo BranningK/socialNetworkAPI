@@ -67,7 +67,8 @@ module.exports = {
 
   deleteReaction(req, res) {
     console.log("Req Parameters: ", req.params);
-    Thought.findOneAndDelete({ _id: req.params.id }, { reactionId: req.params.reactionId }, (err, data) => {
+    reactionId = req.params.reactionId
+    Thought.findOneAndUpdate({ _id: req.params.id }, { $pull: { reactions: { reactionId } } }, (err, data) => {
       if(err) {
         res.status(500).json({ message: "Internal server error" });
       }
