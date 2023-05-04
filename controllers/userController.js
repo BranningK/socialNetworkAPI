@@ -51,6 +51,27 @@ module.exports = {
             }
             res.status(200).json({ message: "Delete Single User Route", data });
         });
+    },
+
+    addFriend(req, res) {
+        console.log("Request Parameters: ", req.params);
+        friendId = req.params.friendId
+        User.findOneAndUpdate({ _id: req.params.id}, { $push: { friends: friendId }}, (err, data) =>{
+            if(err){
+                res.status(500).json({ message: "Internal server error "});
+            }
+            res.status(200).json({ message: "Add Friend Route", data});
+        });
+    },
+    deleteFriend(req, res) {
+        console.log("Request Parameters: ", req.params);
+        friendId = req.params.friendId
+        User.findOneAndUpdate({ _id: req.params.id}, { $pull: { friends: friendId }}, (err, data) =>{
+            if(err){
+                res.status(500).json({ message: "Internal server error "});
+            }
+            res.status(200).json({ message: "Add Friend Route", data});
+        });
     }
 
 };
