@@ -22,7 +22,7 @@ module.exports = {
   },
 
   createThought(req, res) {
-    console.log("Req parameters: ", req.params);
+    console.log("Req Body: ", req.body);
     Thought.create(req.body, (err, data) => {
       if(err){
         res.status(500).json({ message: "Internal server error" });
